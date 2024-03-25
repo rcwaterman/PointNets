@@ -3,7 +3,7 @@ import mediapipe as mp
 import time
 import queue
 import numpy as np
-import pygame
+import pyautogui
 import mouse
 
 from scipy import signal
@@ -38,7 +38,7 @@ riy_array = np.empty(1, dtype=float)
 detect_buffer = queue.LifoQueue()
 
 # Get the dims of the computer screen
-dims = (pygame.display.Info().current_w,pygame.display.Info().current_h)
+dims = pyautogui.size()
 
 #model_path
 model_path = r'./Assets/hand_landmarker.task'
@@ -236,6 +236,7 @@ options = HandLandmarkerOptions(
 
 if __name__ == "__main__":
   cam = cv2.VideoCapture(0)
+  print(cam)
 
   with HandLandmarker.create_from_options(options) as landmarker:
 
