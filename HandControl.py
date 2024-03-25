@@ -3,7 +3,7 @@ import mediapipe as mp
 import time
 import queue
 import numpy as np
-import pyautogui
+import pygame
 import mouse
 
 from scipy import signal
@@ -38,7 +38,7 @@ riy_array = np.empty(1, dtype=float)
 detect_buffer = queue.LifoQueue()
 
 # Get the dims of the computer screen
-dims = pyautogui.size()
+dims = (pygame.display.Info().current_w,pygame.display.Info().current_h)
 
 #model_path
 model_path = r'./Assets/hand_landmarker.task'
