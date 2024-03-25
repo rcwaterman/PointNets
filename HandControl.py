@@ -236,7 +236,6 @@ options = HandLandmarkerOptions(
 
 if __name__ == "__main__":
   cam = cv2.VideoCapture(0)
-  print(cam)
 
   with HandLandmarker.create_from_options(options) as landmarker:
 
@@ -257,7 +256,15 @@ if __name__ == "__main__":
           data = detect_buffer.get()
           frame = draw_landmarks_on_image(frame, data)
 
-        cv2.imshow('Video Feed', frame)
+        # Naming a window 
+        cv2.namedWindow("Image", cv2.WINDOW_NORMAL) 
+          
+        # Using resizeWindow() 
+        cv2.resizeWindow("Image", int(dims[0]/2), int(dims[1]/2))
+
+        cv2.flip(frame, 0)
+        
+        cv2.imshow("Image", frame)
           
         timestamp+=1
 
